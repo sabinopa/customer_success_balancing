@@ -82,7 +82,7 @@ gem install minitest
 ```
 
 ```
-ruby customer_success_balancing.rb
+ruby customer_success_balancing_test.rb
 ```
 Isso executará os testes automatizados para validar a lógica implementada.
 
