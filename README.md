@@ -18,7 +18,7 @@ A lista de CSs e a lista de clientes são percorridas. Cada cliente é atribuíd
 
 #### 3. Retorna o ID do CS com o maior número de clientes.
 
-Após distribuir os clientes, o sistema identifica qual CS ficou com a maior quantidade de clientes. Se houver um empate ou se nenhum CS estiver disponível, o método retorna 0. Caso contrário, retorna o ID do CS que atendeu mais clientes.
+Após distribuir os clientes, o algoritmo identifica qual CS ficou com a maior quantidade de clientes. Se houver um empate ou se nenhum CS estiver disponível, o método retorna 0. Caso contrário, retorna o ID do CS que atendeu mais clientes.
 
 ## Como executar o código
 
