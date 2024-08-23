@@ -1,54 +1,24 @@
 # Customer Success Balancing
 
-Olá equipe RD, agradeço a oportunidade de realizar esse challenge e dividir um pouco do meu trabalho com vocês, aprendi muito nesse processo. Espero que esta solução esteja de acordo com o esperado e fico à disposição para quaisquer dúvidas ou sugestões. :)
+Olá equipe RD, queria agradecer a oportunidade de realizar esse challenge e de poder compartilhar um pouco do meu trabalho com vocês. Eu aprendi muito nesse processo, e espero que a solução que desenvolvi esteja alinhada com o que vocês esperavam. Fico à disposição para qualquer dúvida ou sugestão. :)
 
 ## Descrição
 
-O `CustomerSuccessBalancing` é uma classe em Ruby que implementa um sistema de balanceamento de clientes para _Customer Success_ (CS). O objetivo dessa classe é distribuir clientes entre os _Customer Success_ disponíveis, considerando que alguns CS podem estar indisponíveis, e identificar qual CS ficou com a maior carga de clientes. O código leva em conta as pontuações tanto dos clientes quanto dos _Customer Success`para determinar as melhores alocações.
+A classe `CustomerSuccessBalancing` foi criada em **Ruby** para resolver o desafio de balancear a distribuição de clientes entre os _Customer Success_ (CS) disponíveis. O objetivo é identificar qual CS ficou com a maior carga de clientes, levando em consideração que alguns CS podem estar indisponíveis. O código utiliza as pontuações (_scores_) dos clientes e dos CS para determinar a melhor forma de distribuição.
 
 ## Resumo da solução
 
-Para resolver esse desafio, implementei na classe `CustomerSuccessBalancing` um método que mapeia a distribuição de clientes entre um time de Customer Success (CS) para identificar o CS com o maior número de clientes. Basicamente, o método executa os seguintes passos:
+Para resolver o desafio, desenvolvi métodos na classe `CustomerSuccessBalancing` que organiza os clientes entre a equipe de CS e identifica qual deles ficou responsável por atender o maior número de clientes. O processo segue estes passos:
 
-#### Inicialização (`initialize`):
+#### 1. Ordena as listas de clientes e de CSs pelo score em ordem.
 
-A classe recebe três parâmetros:
-- lista de funcionários de _Customer Success_ (`@customer_success`);
-- lista de clientes (`@customers`)
-- lista de IDs de funcionários de _Customer Success_ que estão indisponíveis (`@away_customer_success`).
+#### 2. Aloca CSs para atender clientes de nível igual ou inferior.
 
-Esses dados são armazenados como variáveis de instância.
+A lista de CSs e a lista de clientes são percorridas. Cada cliente é atribuído ao CS disponível com a maior pontuação que ainda esteja disponível. Quando um CS é associado a um grupo de clientes, esses clientes são removidos da lista daqueles que ainda precisam ser atendidos. Assim, cada CS só cuida dos clientes que ainda não foram alocados.
 
-#### Execução (`execute`):
+#### 3. Retorna o ID do CS com o maior número de clientes.
 
-Esse método aloca clientes aos funcionários de _Customer Success_ e identifica qual funcionário atendeu o maior número de clientes.
-
-#### Alocação de Clientes (`allocate_customers_to_cs`):
-
-Este método distribui os clientes entre os funcionários de _Customer Success_ que estão disponíveis.
-Os funcionários e os clientes são ordenados por suas pontuações (que provavelmente representam habilidades ou experiência para funcionários e necessidades para clientes).
-Cada cliente é atribuído a um funcionário de _Customer Success_ até que a pontuação do cliente seja maior do que a do funcionário atual.
-
-#### Ordenação (`sort_by_score`):
-
-Essa função organiza as listas de clientes e funcionários de _Customer Success_ com base nas suas pontuações, em ordem crescente.
-
-#### Disponibilidade de Funcionários (`available_customer_success`):
-
-Retorna uma lista de funcionários de _Customer Success_ que estão disponíveis, ou seja, aqueles que não estão na lista de indisponíveis (`@away_customer_success`).
-
-#### Verificação de Alocação (`more_customers_to_allocate?`):
-
-Verifica se ainda há clientes para serem atribuídos e se o funcionário atual tem uma pontuação maior ou igual à do próximo cliente a ser atribuído.
-
-#### Identificação do Top _Customer Success_ (`identify_top_customer_success`):
-
-Após a alocação, este método identifica qual funcionário atendeu o maior número de clientes.
-Se houver empate (mais de um funcionário com o maior número de clientes), ele retorna 0, caso contrário, retorna o ID do funcionário com o maior número de atendimentos.
-`
-#### Verificação de Empate (`top_cs_draw?`):
-
-Verifica se há empate entre os funcionários em termos de quantidade de clientes atendidos.
+Após distribuir os clientes, o sistema identifica qual CS ficou com a maior quantidade de clientes. Se houver um empate ou se nenhum CS estiver disponível, o método retorna 0. Caso contrário, retorna o ID do CS que atendeu mais clientes.
 
 ## Como executar o código
 
@@ -63,6 +33,7 @@ gem install minitest
 ```
 
 ### Como executar a aplicação
+
 - Clone este repositório
 ```
 git clone git@github.com:sabinopa/customer_success_balancing.git
